@@ -16,11 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val br = BroadcastReceiver()
         val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+        val filter2 = IntentFilter("hello")
         //충전기 꼽았다 뺏다하면 반응함
         registerReceiver(br, filter)
-//        val button = findViewById<TextView>(R.id.hello)
-//        button.setOnClickListener {
-//            sendBroadcast(Intent(Intent.ACTION_BATTERY_CHANGED))
-//        }
+        registerReceiver(br, filter2)
+        val button = findViewById<TextView>(R.id.hello)
+        button.setOnClickListener {
+            sendBroadcast(Intent("hello"))
+        }
     }
 }
